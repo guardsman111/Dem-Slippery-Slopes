@@ -8,23 +8,47 @@ public class Player_Movement : MonoBehaviour
     private int speed = 10;
     private float hitAngle = 0;
     private float currentSpeed = 0;
+    private Rigidbody body;
+    public Transform parent;
 
     // Start is called before the first frame update
     void Start()
     {
         Rotation = gameObject.transform.eulerAngles.x;
+        body = gameObject.GetComponent<Rigidbody>();
         if (Rotation == 0)
         {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3 ( 0, -0.5f, speed);
+            body.velocity = new Vector3 ( 0, -0.5f, speed);
         }
     }
 
-    // Update is called once per frame
+    // Update handles Strafing
+    //private void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.A))
+    //    {
+    //        if (transform.position.x > -5)
+    //        {
+    //            body.velocity += new Vector3(-10f, 0, 0);
+    //        }
+    //        Debug.Log("A Pressed");
+    //    }
+    //    if (Input.GetKey(KeyCode.D))
+    //    {
+    //        if (transform.position.x < 5)
+    //        {
+    //            body.velocity += new Vector3(10f, 0, 0);
+    //        }
+    //        Debug.Log("D Pressed");
+    //    }
+    //}
+
+    // Fixed Update handles constant speed
     void FixedUpdate()
     {
         RaycastHit hit;
         Rotation = gameObject.transform.eulerAngles.x; //Legacy
-        currentSpeed = gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+        currentSpeed = body.velocity.magnitude;
 
         if (Physics.Raycast(transform.position, -Vector3.up, out hit))
         {
@@ -35,7 +59,7 @@ public class Player_Movement : MonoBehaviour
 
         if (hitAngle == 0)
         {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, -4f, speed);
+            body.velocity = new Vector3(0, -4f, speed);
             Debug.Log(speed);
         }
         else if (hitAngle > 349)
@@ -47,7 +71,7 @@ public class Player_Movement : MonoBehaviour
             }
             else
             {
-                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
+                body.velocity = new Vector3(0, 0, speed);
             }
         }
         else if (hitAngle > 339 && hitAngle <= 349)
@@ -59,7 +83,7 @@ public class Player_Movement : MonoBehaviour
             }
             else
             {
-                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
+                body.velocity = new Vector3(0, 0, speed);
             }
         }
         else if (hitAngle > 329 && hitAngle <= 339)
@@ -71,7 +95,7 @@ public class Player_Movement : MonoBehaviour
             }
             else
             {
-                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
+                body.velocity = new Vector3(0, 0, speed);
             }
         }
         else if (hitAngle > 0 && hitAngle <= 11)
@@ -82,11 +106,11 @@ public class Player_Movement : MonoBehaviour
             }
             if (currentSpeed < speed - 1)
             {
-                gameObject.GetComponent<Rigidbody>().velocity += new Vector3(0, -6f, speed / 15);
+                body.velocity += new Vector3(0, -6f, speed / 50);
             }
             else
             {
-                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, -6f, speed);
+                body.velocity = new Vector3(0, -6f, speed);
             }
         }
         else if (hitAngle > 11 && hitAngle <= 21)
@@ -97,11 +121,11 @@ public class Player_Movement : MonoBehaviour
             }
             if (currentSpeed < speed - 1)
             {
-                gameObject.GetComponent<Rigidbody>().velocity += new Vector3(0, -20f, speed / 15);
+                body.velocity += new Vector3(0, -20f, speed / 50);
             }
             else
             {
-                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, -20f, speed);
+                body.velocity = new Vector3(0, -20f, speed);
             }
         }
         else if (hitAngle > 21 && hitAngle <= 31)
@@ -112,11 +136,11 @@ public class Player_Movement : MonoBehaviour
             }
             if (currentSpeed < speed - 1)
             {
-                gameObject.GetComponent<Rigidbody>().velocity += new Vector3(0, -20f, speed / 15);
+                body.velocity += new Vector3(0, -20f, speed / 50);
             }
             else
             {
-                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, -20f, speed);
+                body.velocity = new Vector3(0, -20f, speed);
             }
         }
         else
