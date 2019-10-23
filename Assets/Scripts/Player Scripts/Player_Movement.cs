@@ -11,6 +11,8 @@ public class Player_Movement : MonoBehaviour
     private Rigidbody body;
     public Transform parent;
 
+    private bool flat = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class Player_Movement : MonoBehaviour
         {
             body.velocity = new Vector3 ( 0, -0.5f, speed);
         }
+        Time.timeScale = 0.5f;
     }
 
     // Update handles Strafing
@@ -59,11 +62,16 @@ public class Player_Movement : MonoBehaviour
 
         if (hitAngle == 0)
         {
+            if (!flat)
+            {
+                speed = (int)currentSpeed;
+            }
             body.velocity = new Vector3(0, -4f, speed);
-            Debug.Log(speed);
+            flat = true;
         }
         else if (hitAngle > 349)
         {
+            flat = false;
             speed = 8;
             if (currentSpeed > speed + 1)
             {
@@ -76,6 +84,7 @@ public class Player_Movement : MonoBehaviour
         }
         else if (hitAngle > 339 && hitAngle <= 349)
         {
+            flat = false;
             speed = 6;
             if (currentSpeed > speed + 1)
             {
@@ -88,6 +97,7 @@ public class Player_Movement : MonoBehaviour
         }
         else if (hitAngle > 329 && hitAngle <= 339)
         {
+            flat = false;
             speed = 4;
             if (currentSpeed > speed + 1)
             {
@@ -100,54 +110,76 @@ public class Player_Movement : MonoBehaviour
         }
         else if (hitAngle > 0 && hitAngle <= 11)
         {
+            flat = false;
             if (speed < 12)
             {
                 speed = 12;
             }
-            if (currentSpeed < speed - 1)
+            if (currentSpeed < speed - 0.5f)
             {
-                body.velocity += new Vector3(0, -6f, speed / 50);
+                //physics speeds it up
+                Debug.Log("speeding");
+            }
+            else if (currentSpeed > speed + 1)
+            {
+                body.velocity -= new Vector3(0, 6f, 1.0f);
+                Debug.Log("slowing");
             }
             else
             {
-                body.velocity = new Vector3(0, -6f, speed);
+                body.velocity -= new Vector3(0, 6f, 0.5f);
+                Debug.Log("maintaining");
             }
         }
         else if (hitAngle > 11 && hitAngle <= 21)
         {
+            flat = false;
             if (speed < 14)
             {
                 speed = 14;
             }
-            if (currentSpeed < speed - 1)
+            if (currentSpeed < speed - 0.5f)
             {
-                body.velocity += new Vector3(0, -20f, speed / 50);
+                //physics speeds it up
+                Debug.Log("speeding");
+            }
+            else if (currentSpeed > speed + 1)
+            {
+                body.velocity -= new Vector3(0, 6f, 4.0f);
+                Debug.Log("slowing");
             }
             else
             {
-                body.velocity = new Vector3(0, -20f, speed);
+                body.velocity -= new Vector3(0, 6f, 2.5f);
+                Debug.Log("maintaining");
             }
         }
         else if (hitAngle > 21 && hitAngle <= 31)
         {
+            flat = false;
             if (speed < 16)
             {
                 speed = 16;
             }
-            if (currentSpeed < speed - 1)
+            if (currentSpeed < speed - 0.5f)
             {
-                body.velocity += new Vector3(0, -20f, speed / 50);
+                //physics speeds it up
+                Debug.Log("speeding");
+            }
+            else if (currentSpeed > speed + 1)
+            {
+                body.velocity -= new Vector3(0, 6f, 8.0f);
+                Debug.Log("slowing");
             }
             else
             {
-                body.velocity = new Vector3(0, -20f, speed);
+                body.velocity -= new Vector3(0, 6f, 5.0f);
+                Debug.Log("maintaining");
             }
         }
         else
         {
-            Debug.Log(hitAngle);
         }
-        Debug.Log(hitAngle);
         Debug.Log(currentSpeed);
     }
 }
