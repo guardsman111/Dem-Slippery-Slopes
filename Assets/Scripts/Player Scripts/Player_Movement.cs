@@ -185,4 +185,9 @@ public class Player_Movement : MonoBehaviour
         }
         Debug.Log(currentSpeed);
     }
+
+    public int getSpeed()
+    {
+        return speed;
+    }
 }
