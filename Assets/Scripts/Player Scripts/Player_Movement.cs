@@ -22,29 +22,38 @@ public class Player_Movement : MonoBehaviour
         {
             body.velocity = new Vector3 ( 0, -0.5f, speed);
         }
-        Time.timeScale = 0.5f;
     }
 
-    // Update handles Strafing
-    //private void Update()
-    //{
-    //    if (Input.GetKey(KeyCode.A))
-    //    {
-    //        if (transform.position.x > -5)
-    //        {
-    //            body.velocity += new Vector3(-10f, 0, 0);
-    //        }
-    //        Debug.Log("A Pressed");
-    //    }
-    //    if (Input.GetKey(KeyCode.D))
-    //    {
-    //        if (transform.position.x < 5)
-    //        {
-    //            body.velocity += new Vector3(10f, 0, 0);
-    //        }
-    //        Debug.Log("D Pressed");
-    //    }
-    //}
+    //Update handles Strafing
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.A) && transform.position.x > -2)
+        {
+            if (body.velocity.x > -1)
+            {
+                body.velocity += new Vector3(-0.3f, 0, 0);
+                Debug.Log("A Pressed");
+            }
+            Debug.Log(body.velocity.x);
+        }
+        else if (Input.GetKey(KeyCode.D) && transform.position.x < 2)
+        {
+            if (body.velocity.x < 1)
+            {
+                body.velocity += new Vector3(0.3f, 0, 0);
+                Debug.Log("D Pressed");
+            }
+            Debug.Log(body.velocity.x);
+        } 
+        else if (body.velocity.x > 0)
+        {
+            body.velocity += new Vector3(-0.5f, 0, 0);
+        }
+        else if (body.velocity.x < 0)
+        {
+            body.velocity += new Vector3(0.5f, 0, 0);
+        }
+    }
 
     // Fixed Update handles constant speed
     void FixedUpdate()
@@ -62,16 +71,16 @@ public class Player_Movement : MonoBehaviour
 
         if (hitAngle == 0)
         {
-            if (!flat)
+            if (currentSpeed < speed)
             {
-                speed = (int)currentSpeed;
+                body.velocity += new Vector3(0, -4f, 1.0f);
+            } else
+            {
+                body.velocity -= new Vector3(0, 4f, 1.0f);
             }
-            body.velocity = new Vector3(0, -4f, speed);
-            flat = true;
         }
         else if (hitAngle > 349)
         {
-            flat = false;
             speed = 8;
             if (currentSpeed > speed + 1)
             {
@@ -84,7 +93,6 @@ public class Player_Movement : MonoBehaviour
         }
         else if (hitAngle > 339 && hitAngle <= 349)
         {
-            flat = false;
             speed = 6;
             if (currentSpeed > speed + 1)
             {
@@ -97,7 +105,6 @@ public class Player_Movement : MonoBehaviour
         }
         else if (hitAngle > 329 && hitAngle <= 339)
         {
-            flat = false;
             speed = 4;
             if (currentSpeed > speed + 1)
             {
@@ -110,19 +117,18 @@ public class Player_Movement : MonoBehaviour
         }
         else if (hitAngle > 0 && hitAngle <= 11)
         {
-            flat = false;
             if (speed < 12)
             {
                 speed = 12;
             }
             if (currentSpeed < speed - 0.5f)
             {
-                //physics speeds it up
+                body.velocity += new Vector3(0, -4f, 1.0f);
                 Debug.Log("speeding");
             }
             else if (currentSpeed > speed + 1)
             {
-                body.velocity -= new Vector3(0, 6f, 1.0f);
+                body.velocity -= new Vector3(0, 6f, 2.0f);
                 Debug.Log("slowing");
             }
             else
@@ -133,14 +139,12 @@ public class Player_Movement : MonoBehaviour
         }
         else if (hitAngle > 11 && hitAngle <= 21)
         {
-            flat = false;
             if (speed < 14)
             {
                 speed = 14;
             }
             if (currentSpeed < speed - 0.5f)
             {
-                //physics speeds it up
                 Debug.Log("speeding");
             }
             else if (currentSpeed > speed + 1)
@@ -156,14 +160,13 @@ public class Player_Movement : MonoBehaviour
         }
         else if (hitAngle > 21 && hitAngle <= 31)
         {
-            flat = false;
             if (speed < 16)
             {
                 speed = 16;
             }
             if (currentSpeed < speed - 0.5f)
             {
-                //physics speeds it up
+                body.velocity += new Vector3(0, -4f, 1.0f);
                 Debug.Log("speeding");
             }
             else if (currentSpeed > speed + 1)
