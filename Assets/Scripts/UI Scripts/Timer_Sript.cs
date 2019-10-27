@@ -21,11 +21,14 @@ public class Timer_Sript : MonoBehaviour
             timerExists = true;
         }
 
-        TimeSpan elapsed = timer.Elapsed;
+        if (timer != null)
+        {
+            TimeSpan elapsed = timer.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", elapsed.Minutes, elapsed.Seconds,
+               elapsed.Milliseconds / 10);
+            this.gameObject.GetComponent<Text>().text = elapsedTime;
+        }
 
-        string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", elapsed.Minutes, elapsed.Seconds,
-           elapsed.Milliseconds / 10);
-        this.gameObject.GetComponent<Text>().text = elapsedTime;
     }
 
 }
