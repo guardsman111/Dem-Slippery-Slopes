@@ -13,7 +13,21 @@ public class Player_Movement : MonoBehaviour
     public float strafeSpeed = 3.0f;
 
     public bool racing = false;
+    public bool finished = false;
     private bool slowing = true; //used in debugging
+
+    [SerializeField]
+    private int slow = 10;
+    [SerializeField]
+    private int slower = 8;
+    [SerializeField]
+    private int slowest = 6;
+    [SerializeField]
+    private int fast = 12;
+    [SerializeField]
+    private int faster = 14;
+    [SerializeField]
+    private int fastest = 16;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +40,10 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    //Update handles Strafing
+    //Update handles Movement
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !finished)
         {
             racing = true;
         }
@@ -98,20 +112,30 @@ public class Player_Movement : MonoBehaviour
                 slowing = false;
             }
         }
+        else if (finished)
+        {
+            if (currentSpeed > 0.5)
+            {
+                body.velocity -= new Vector3(0, 0.3f, 1f);
+                Debug.Log(currentSpeed);
+            }
+            body.velocity = new Vector3(0, 0, 0);
+        }
         else
         {
             body.velocity = new Vector3(0, 0, 0);
+            Debug.Log("Error - !racing and !finished");
         }
     }
 
-    // Fixed Update handles constant speed
+    // Fixed Update handles sledge angle and max speeds
     void FixedUpdate()
     {
+        currentSpeed = body.velocity.z;
         if (racing)
         {
             RaycastHit hit;
             Rotation = gameObject.transform.eulerAngles.x; //Legacy
-            currentSpeed = body.velocity.z;
 
             // Rotate Sledge with ground
             if (Physics.Raycast(transform.position, -Vector3.up, out hit))
@@ -124,34 +148,34 @@ public class Player_Movement : MonoBehaviour
 
             //Calculates max speed based on hit angle
             if (hitAngle > 349)
-                if (speed > 8)
+                if (speed > slow)
                 {
-                    speed = 8;
+                    speed = slow;
                 }
             if (hitAngle > 339 && hitAngle <= 349)
-                if (speed > 6)
+                if (speed > slower)
                 {
-                    speed = 6;
+                    speed = slower;
                 }
             if (hitAngle > 329 && hitAngle <= 339)
-                if (speed > 4)
+                if (speed > slowest)
                 {
-                    speed = 4;
+                    speed = slowest;
                 }
             if (hitAngle > 0 && hitAngle <= 11)
-                if (speed < 12)
+                if (speed < fast)
                 {
-                    speed = 12;
+                    speed = fast;
                 }
             if (hitAngle > 11 && hitAngle <= 21)
-                if (speed < 14)
+                if (speed < faster)
                 {
-                    speed = 14;
+                    speed = faster;
                 }
             if (hitAngle > 21 && hitAngle <= 31)
-                if (speed < 16)
+                if (speed < fastest)
                 {
-                    speed = 16;
+                    speed = fastest;
                 }
 
             /// Legacy Constant Speed
@@ -303,5 +327,12 @@ public class Player_Movement : MonoBehaviour
     public void SpeedReport()
     {
         Debug.Log(currentSpeed);
+    }
+
+    public void StopRacing()
+    {
+        Debug.Log("Stop Racing!");
+        racing = false;
+        finished = true;
     }
 }
