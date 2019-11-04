@@ -116,10 +116,13 @@ public class Player_Movement : MonoBehaviour
         {
             if (currentSpeed > 0.5)
             {
-                body.velocity -= new Vector3(0, 0.3f, 1f);
+                body.velocity -= new Vector3(0, 0.5f, 0.2f);
                 Debug.Log(currentSpeed);
             }
-            body.velocity = new Vector3(0, 0, 0);
+            else
+            {
+                body.velocity = new Vector3(0, 0, 0);
+            }
         }
         else
         {

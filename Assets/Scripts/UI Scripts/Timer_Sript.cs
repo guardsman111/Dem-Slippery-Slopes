@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Timer_Sript : MonoBehaviour
 {
-    public Stopwatch timer;
+    public static Stopwatch timer;
     private bool timerExists = false;
 
 
