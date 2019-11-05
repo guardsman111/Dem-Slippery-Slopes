@@ -16,6 +16,7 @@ public class Player_Movement : MonoBehaviour
     public bool finished = false;
     private bool slowing = true; //used in debugging
 
+    //Speed settings for each slope type
     [SerializeField]
     private int slow = 10;
     [SerializeField]
@@ -75,6 +76,7 @@ public class Player_Movement : MonoBehaviour
 
 
             //New Constant Speed
+            //Speed is calculated using angle underneath sledge
             if (currentSpeed >= speed)
             {
                 if (speed > 11)
@@ -112,6 +114,7 @@ public class Player_Movement : MonoBehaviour
                 slowing = false;
             }
         }
+        //If race is finished slow sledge and prevent any interaction
         else if (finished)
         {
             if (currentSpeed > 0.5)
@@ -124,6 +127,7 @@ public class Player_Movement : MonoBehaviour
                 body.velocity = new Vector3(0, 0, 0);
             }
         }
+        //Bug Catcher
         else
         {
             body.velocity = new Vector3(0, 0, 0);

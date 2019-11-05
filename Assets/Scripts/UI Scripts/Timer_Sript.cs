@@ -11,7 +11,7 @@ public class Timer_Sript : MonoBehaviour
     private bool timerExists = false;
 
 
-    // Update is called once per frame
+    //Starts timer on race start and posts it to the UI
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !timerExists)

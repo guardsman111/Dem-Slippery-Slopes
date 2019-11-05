@@ -7,6 +7,7 @@ public class Coin_Script : MonoBehaviour
 {
     public static int coins = 0;
 
+    //Updates UI coin value
     void FixedUpdate()
     {
         this.gameObject.GetComponent<Text>().text = coins.ToString();

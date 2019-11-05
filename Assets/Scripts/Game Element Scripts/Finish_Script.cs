@@ -12,11 +12,13 @@ public class Finish_Script : MonoBehaviour
     public GameObject Flag1;
     public GameObject Flag2;
 
+    //Starts the second flag animation slightly late so they look less alike when the player comes to the finish
     public void Start()
     {
         Invoke("SpawnFlag", 1.0f);
     }
 
+    //Stops race on trigger, then calculates player time
     public void OnTriggerEnter(Collider collider)
     {
         if (collider.tag == "Player")
