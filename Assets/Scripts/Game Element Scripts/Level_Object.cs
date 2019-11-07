@@ -10,6 +10,10 @@ public class Level_Object : MonoBehaviour
     public GameObject play;
     public float moveSpeed = 0.3f;
 
+    public GameObject star1;
+    public GameObject star2;
+    public GameObject star3;
+
     //Starts player sledge moving towards and rotates sledge to face this object
     public void OnMouseDown()
     {

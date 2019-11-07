@@ -12,6 +12,8 @@ public class Finish_Script : MonoBehaviour
     public GameObject Flag1;
     public GameObject Flag2;
 
+    public GameObject canvasEnd;
+
     //Starts the second flag animation slightly late so they look less alike when the player comes to the finish
     public void Start()
     {
@@ -24,6 +26,7 @@ public class Finish_Script : MonoBehaviour
         if (collider.tag == "Player")
         {
             pMoveScript.StopRacing();
+            canvasEnd.SetActive(true);
             if (minTime >= Timer_Sript.timer.Elapsed.TotalSeconds)
             {
                 Debug.Log("Faster than minimum!"); // Minimum time completion script here
