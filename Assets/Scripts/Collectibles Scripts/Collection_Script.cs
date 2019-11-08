@@ -11,7 +11,7 @@ public class Collection_Script : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Coin_Script.coins += coinValue;
+            Coin_Script.SetLevelCoins(coinValue);
             Destroy(gameObject);
         }
     }
