@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Coin_Script : MonoBehaviour
 {
-    public static int coins = 0;
-
     private static int levelCoins = 0;
 
     private void Start()
@@ -27,7 +25,6 @@ public class Coin_Script : MonoBehaviour
 
     public void ReturnCoinsToWorld()
     {
-        coins += levelCoins;
-        Debug.Log("coins added");
+        World_Coin_Script.coins += levelCoins;
     }
 }

@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class Play_Level_Script : MonoBehaviour
 {
-    public Level_Object parent;
+    [SerializeField]
+    private int ID;
+    public World_Script worldScript;
+    public string linkScene;
 
     public void OnMouseDown()
     {
-        parent.StartLevel();
+        World_Script.currentLevelID = ID;
+        worldScript.StartLevel(linkScene);
+    }
+
+    public void SetID(int newID)
+    {
+        ID = newID;
+        this.gameObject.SetActive(false);
+    }
+
+    public int GetID()
+    {
+        return ID;
     }
 }

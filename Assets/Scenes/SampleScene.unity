@@ -5006,7 +5006,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pMoveScript: {fileID: 793872314}
-  minTime: 30
+  fastTime: 25
+  medTime: 30
+  slowTime: 35
   Flag1: {fileID: 1051218315}
   Flag2: {fileID: 112265987}
   canvasEnd: {fileID: 59532770}

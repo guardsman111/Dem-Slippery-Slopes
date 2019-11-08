@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Level_Object : MonoBehaviour
 {
-    public string linkScene;
+    [SerializeField]
+    private int ID;
     public GameObject sledge;
     public GameObject play;
     public float moveSpeed = 0.3f;
@@ -14,6 +14,12 @@ public class Level_Object : MonoBehaviour
     public GameObject star2;
     public GameObject star3;
 
+    public int starsAchieved = 0;
+
+    void Awake()
+    {
+        CheckStars();
+    }
     //Starts player sledge moving towards and rotates sledge to face this object
     public void OnMouseDown()
     {
@@ -44,9 +50,40 @@ public class Level_Object : MonoBehaviour
         play.SetActive(false);
     }
 
-    public void StartLevel()
+    public void CheckStars()
     {
-        SceneManager.LoadScene(linkScene);
+        switch (starsAchieved)
+        {
+            case 1:
+                    star1.SetActive(true);
+                    star2.SetActive(false);
+                    star3.SetActive(false);
+                break;
+            case 2:
+                    star1.SetActive(true);
+                    star2.SetActive(true);
+                    star3.SetActive(false);
+                break;
+            case 3:
+                    star1.SetActive(true);
+                    star2.SetActive(true);
+                    star3.SetActive(true);
+                break;
+            default:
+                    star1.SetActive(false);
+                    star2.SetActive(false);
+                    star3.SetActive(false);
+                break;
+        }
     }
 
+    public void SetID(int newID)
+    {
+        ID = newID;
+    }
+
+    public int GetID()
+    {
+        return ID;
+    }
 }

@@ -7,7 +7,11 @@ public class Finish_Script : MonoBehaviour
     public Player_Movement pMoveScript;
 
     [SerializeField]
-    private float minTime;
+    private float fastTime;
+    [SerializeField]
+    private float medTime;
+    [SerializeField]
+    private float slowTime;
 
     public GameObject Flag1;
     public GameObject Flag2;
@@ -27,19 +31,32 @@ public class Finish_Script : MonoBehaviour
         {
             pMoveScript.StopRacing();
             canvasEnd.SetActive(true);
-            if (minTime >= Timer_Sript.timer.Elapsed.TotalSeconds)
-            {
-                Debug.Log("Faster than minimum!"); // Minimum time completion script here
-            }
-            else
-            {
-                Debug.Log("Slower than minimum!"); // Other time completion scripts here and below
-            }
+            CalculateStars();
         }
     }
 
     public void SpawnFlag()
     {
         Flag2.SetActive(true);
+    }
+
+    public void CalculateStars()
+    {
+        if (fastTime >= Timer_Sript.timer.Elapsed.TotalSeconds)
+        {
+            World_Script.starsAchieved = 3;
+        }
+        else if (medTime >= Timer_Sript.timer.Elapsed.TotalSeconds)
+        {
+            World_Script.starsAchieved = 2;
+        }
+        else if (slowTime >= Timer_Sript.timer.Elapsed.TotalSeconds)
+        {
+            World_Script.starsAchieved = 1;
+        }
+        else
+        {
+            World_Script.starsAchieved = 0;
+        }
     }
 }
