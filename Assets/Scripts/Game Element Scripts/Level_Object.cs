@@ -123,8 +123,7 @@ public class Level_Object : MonoBehaviour
             {
                 foreach (Level_Object i in linkedLevels)
                 {
-                    i.locked = newV;
-                    i.gameObject.GetComponent<MeshRenderer>().material = unlockedMat;
+                    i.SetLocked(newV);
                 }
             }
         }

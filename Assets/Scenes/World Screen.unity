@@ -995,7 +995,7 @@ MonoBehaviour:
   star1: {fileID: 421226085}
   star2: {fileID: 2045854683}
   star3: {fileID: 304382244}
-  unlockedMat: {fileID: 2100000, guid: 56e31e0e74c572f4689c7f7c8f464345, type: 2}
+  unlockedMat: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   unlockButton: {fileID: 413316314}
   levelCost: 0
   starsAchieved: 0
@@ -2566,7 +2566,7 @@ MonoBehaviour:
   star1: {fileID: 1722626192}
   star2: {fileID: 1874385995}
   star3: {fileID: 923190763}
-  unlockedMat: {fileID: 2100000, guid: 56e31e0e74c572f4689c7f7c8f464345, type: 2}
+  unlockedMat: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   unlockButton: {fileID: 413316314}
   levelCost: 1
   starsAchieved: 0
@@ -2589,7 +2589,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 56e31e0e74c572f4689c7f7c8f464345, type: 2}
+  - {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2890,7 +2890,7 @@ MonoBehaviour:
   star1: {fileID: 1387074982}
   star2: {fileID: 995344966}
   star3: {fileID: 287309828}
-  unlockedMat: {fileID: 2100000, guid: 56e31e0e74c572f4689c7f7c8f464345, type: 2}
+  unlockedMat: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   unlockButton: {fileID: 413316314}
   levelCost: 0
   starsAchieved: 0
@@ -3037,6 +3037,11 @@ PrefabInstance:
       propertyPath: unlockButton
       value: 
       objectReference: {fileID: 413316314}
+    - target: {fileID: 2500527363103912363, guid: cffec1cf08599e548a84d3c4d3e866a5,
+        type: 3}
+      propertyPath: unlockedMat
+      value: 
+      objectReference: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
     - target: {fileID: 2500527362831171822, guid: cffec1cf08599e548a84d3c4d3e866a5,
         type: 3}
       propertyPath: worldScript

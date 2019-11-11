@@ -334,10 +334,20 @@ public class Player_Movement : MonoBehaviour
         Debug.Log(currentSpeed);
     }
 
+    //Stops Race
     public void StopRacing()
     {
         Debug.Log("Stop Racing!");
         racing = false;
         finished = true;
+    }
+
+    //Same as stop race but immediately stops the game objects movement
+    public void HitObstacle()
+    {
+        Debug.Log("Stop Racing!");
+        racing = false;
+        finished = true;
+        body.velocity = new Vector3(0, 0, 0);
     }
 }
