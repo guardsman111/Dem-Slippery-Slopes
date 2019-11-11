@@ -5,7 +5,10 @@ using UnityEngine;
 public class Level_Object : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("Level number minus 1")]
     private int ID;
+    [SerializeField]
+    private bool locked = false;
     public GameObject sledge;
     public GameObject play;
     public float moveSpeed = 0.3f;
@@ -13,7 +16,10 @@ public class Level_Object : MonoBehaviour
     public GameObject star1;
     public GameObject star2;
     public GameObject star3;
+    public Material unlockedMat;
+    public GameObject unlockButton;
 
+    public int levelCost = 1;
     public int starsAchieved = 0;
 
     void Awake()
@@ -23,11 +29,19 @@ public class Level_Object : MonoBehaviour
     //Starts player sledge moving towards and rotates sledge to face this object
     public void OnMouseDown()
     {
-        InvokeRepeating("MoveTowards", 0.02f, 0.02f);
-        sledge.transform.position = Vector3.MoveTowards(sledge.transform.position, transform.position, moveSpeed);
-        Vector3 lookPos = transform.position - sledge.transform.position;
-        Quaternion lookRot = Quaternion.LookRotation(lookPos);
-        sledge.transform.localRotation = lookRot;
+        if (!locked)
+        {
+            InvokeRepeating("MoveTowards", 0.02f, 0.02f);
+            sledge.transform.position = Vector3.MoveTowards(sledge.transform.position, transform.position, moveSpeed);
+            Vector3 lookPos = transform.position - sledge.transform.position;
+            Quaternion lookRot = Quaternion.LookRotation(lookPos);
+            sledge.transform.localRotation = lookRot;
+        }
+        else if (locked)
+        {
+            unlockButton.GetComponent<Unlock_Button_Script>().ShowButton();
+            unlockButton.GetComponent<Unlock_Button_Script>().selectedLevel = this;
+        }
     }
 
     //Continuously moves sledge towards this object
@@ -40,16 +54,19 @@ public class Level_Object : MonoBehaviour
         }
     }
 
+    //Sets the level's play button active when the player is over the level object, to prevent random level starting
     public void OnTriggerEnter(Collider other)
     {
         play.SetActive(true);
     }
 
+    //Sets the level's play button inactive
     public void OnTriggerExit(Collider other)
     {
         play.SetActive(false);
     }
 
+    //Sets the number of stars in the world view according to how many stars have previously been achieved
     public void CheckStars()
     {
         switch (starsAchieved)
@@ -77,6 +94,7 @@ public class Level_Object : MonoBehaviour
         }
     }
 
+    //For setting and getting ID
     public void SetID(int newID)
     {
         ID = newID;
@@ -85,5 +103,20 @@ public class Level_Object : MonoBehaviour
     public int GetID()
     {
         return ID;
+    }
+
+    //For setting and getting locked value
+    public void SetLocked(bool newV)
+    {
+        locked = newV;
+        if (!locked)
+        {
+            GetComponent<MeshRenderer>().material = unlockedMat;
+        }
+    }
+
+    public bool GetLocked(bool newV)
+    {
+        return locked;
     }
 }

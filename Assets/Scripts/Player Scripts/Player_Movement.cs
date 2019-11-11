@@ -127,11 +127,9 @@ public class Player_Movement : MonoBehaviour
                 body.velocity = new Vector3(0, 0, 0);
             }
         }
-        //Bug Catcher
         else
         {
             body.velocity = new Vector3(0, 0, 0);
-            Debug.Log("Error - !racing and !finished");
         }
     }
 

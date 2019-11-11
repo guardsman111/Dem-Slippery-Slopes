@@ -40,6 +40,7 @@ public class Finish_Script : MonoBehaviour
         Flag2.SetActive(true);
     }
 
+    //Calculates the number of stars awarded according to player time
     public void CalculateStars()
     {
         if (fastTime >= Timer_Sript.timer.Elapsed.TotalSeconds)

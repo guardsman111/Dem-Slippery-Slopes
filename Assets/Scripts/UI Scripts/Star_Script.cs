@@ -7,7 +7,7 @@ public class Star_Script : MonoBehaviour
 {
     public static int stars = 0;
 
-    //Updates UI coin value
+    //Updates UI star value
     void FixedUpdate()
     {
         this.gameObject.GetComponent<Text>().text = stars.ToString();
