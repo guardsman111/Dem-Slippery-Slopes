@@ -22,6 +22,10 @@ public class Level_Object : MonoBehaviour
     public int levelCost = 1;
     public int starsAchieved = 0;
 
+    public Level_Object[] linkedLevels;
+    [Tooltip("Sequence children cannot be selected unless the sequence parent (the level object with the linked levels array) has been unlocked")]
+    public bool isSequenceChild = false;
+
     void Awake()
     {
         CheckStars();
@@ -39,8 +43,11 @@ public class Level_Object : MonoBehaviour
         }
         else if (locked)
         {
-            unlockButton.GetComponent<Unlock_Button_Script>().ShowButton();
-            unlockButton.GetComponent<Unlock_Button_Script>().selectedLevel = this;
+            if (!isSequenceChild)
+            {
+                unlockButton.GetComponent<Unlock_Button_Script>().ShowButton();
+                unlockButton.GetComponent<Unlock_Button_Script>().selectedLevel = this;
+            }
         }
     }
 
@@ -112,6 +119,14 @@ public class Level_Object : MonoBehaviour
         if (!locked)
         {
             GetComponent<MeshRenderer>().material = unlockedMat;
+            if (linkedLevels != null)
+            {
+                foreach (Level_Object i in linkedLevels)
+                {
+                    i.locked = newV;
+                    i.gameObject.GetComponent<MeshRenderer>().material = unlockedMat;
+                }
+            }
         }
     }
 
