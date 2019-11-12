@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Play_Level_Script : MonoBehaviour
 {
-    [SerializeField]
     private int ID;
+    private string linkScene;
     public World_Script worldScript;
-    public string linkScene;
+
+    private void Start()
+    {
+        ID = GetComponentInParent<Level_Object>().GetID();
+        linkScene = GetComponentInParent<Level_Object>().linkedScene;
+    }
 
     //Starts the level and sets the static level ID so the game knows which level to add stars too
     public void OnMouseDown()

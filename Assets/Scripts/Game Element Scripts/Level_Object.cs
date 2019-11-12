@@ -9,20 +9,23 @@ public class Level_Object : MonoBehaviour
     private int ID;
     [SerializeField]
     private bool locked = false;
+
     public GameObject sledge;
     public GameObject play;
     public float moveSpeed = 0.3f;
+    public string linkedScene;
+
+    public Material unlockedMat;
+    public GameObject unlockButton;
+    public int levelCost = 1;
 
     public GameObject star1;
     public GameObject star2;
     public GameObject star3;
-    public Material unlockedMat;
-    public GameObject unlockButton;
-
-    public int levelCost = 1;
     public int starsAchieved = 0;
 
     public Level_Object[] linkedLevels;
+
     [Tooltip("Sequence children cannot be selected unless the sequence parent (the level object with the linked levels array) has been unlocked")]
     public bool isSequenceChild = false;
 

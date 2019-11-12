@@ -226,9 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f71bb14df76a24298e5e5b64231940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
   worldScript: {fileID: 159706929}
-  linkScene: SampleScene
 --- !u!1 &63250514
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,9 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f71bb14df76a24298e5e5b64231940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
   worldScript: {fileID: 159706929}
-  linkScene: Dudd
 --- !u!64 &186251068
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -992,12 +988,13 @@ MonoBehaviour:
   sledge: {fileID: 8296172667935232910}
   play: {fileID: 1560653551}
   moveSpeed: 0.3
-  star1: {fileID: 421226085}
-  star2: {fileID: 2045854683}
-  star3: {fileID: 304382244}
+  linkedScene: Broke
   unlockedMat: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   unlockButton: {fileID: 413316314}
   levelCost: 0
+  star1: {fileID: 421226085}
+  star2: {fileID: 2045854683}
+  star3: {fileID: 304382244}
   starsAchieved: 0
   linkedLevels: []
   isSequenceChild: 1
@@ -2198,9 +2195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f71bb14df76a24298e5e5b64231940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
   worldScript: {fileID: 159706929}
-  linkScene: Dudd
 --- !u!64 &1560653553
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2562,13 +2557,14 @@ MonoBehaviour:
   locked: 0
   sledge: {fileID: 8296172667935232910}
   play: {fileID: 42091198}
-  moveSpeed: 1
-  star1: {fileID: 1722626192}
-  star2: {fileID: 1874385995}
-  star3: {fileID: 923190763}
+  moveSpeed: 0
+  linkedScene: SampleScene
   unlockedMat: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   unlockButton: {fileID: 413316314}
   levelCost: 1
+  star1: {fileID: 1722626192}
+  star2: {fileID: 1874385995}
+  star3: {fileID: 923190763}
   starsAchieved: 0
   linkedLevels: []
   isSequenceChild: 0
@@ -2887,12 +2883,13 @@ MonoBehaviour:
   sledge: {fileID: 8296172667935232910}
   play: {fileID: 186251066}
   moveSpeed: 0.3
-  star1: {fileID: 1387074982}
-  star2: {fileID: 995344966}
-  star3: {fileID: 287309828}
+  linkedScene: Bong
   unlockedMat: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   unlockButton: {fileID: 413316314}
   levelCost: 0
+  star1: {fileID: 1387074982}
+  star2: {fileID: 995344966}
+  star3: {fileID: 287309828}
   starsAchieved: 0
   linkedLevels: []
   isSequenceChild: 1
@@ -2972,6 +2969,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2500527363103912363, guid: cffec1cf08599e548a84d3c4d3e866a5,
+        type: 3}
+      propertyPath: sledge
+      value: 
+      objectReference: {fileID: 8296172667935232910}
+    - target: {fileID: 2500527363103912363, guid: cffec1cf08599e548a84d3c4d3e866a5,
+        type: 3}
+      propertyPath: unlockButton
+      value: 
+      objectReference: {fileID: 413316314}
+    - target: {fileID: 2500527363103912363, guid: cffec1cf08599e548a84d3c4d3e866a5,
+        type: 3}
+      propertyPath: unlockedMat
+      value: 
+      objectReference: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
+    - target: {fileID: 2500527363103912363, guid: cffec1cf08599e548a84d3c4d3e866a5,
+        type: 3}
+      propertyPath: linkedScene
+      value: Dud
+      objectReference: {fileID: 0}
     - target: {fileID: 2500527363103912366, guid: cffec1cf08599e548a84d3c4d3e866a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3027,21 +3044,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2500527363103912363, guid: cffec1cf08599e548a84d3c4d3e866a5,
-        type: 3}
-      propertyPath: sledge
-      value: 
-      objectReference: {fileID: 8296172667935232910}
-    - target: {fileID: 2500527363103912363, guid: cffec1cf08599e548a84d3c4d3e866a5,
-        type: 3}
-      propertyPath: unlockButton
-      value: 
-      objectReference: {fileID: 413316314}
-    - target: {fileID: 2500527363103912363, guid: cffec1cf08599e548a84d3c4d3e866a5,
-        type: 3}
-      propertyPath: unlockedMat
-      value: 
-      objectReference: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
     - target: {fileID: 2500527362831171822, guid: cffec1cf08599e548a84d3c4d3e866a5,
         type: 3}
       propertyPath: worldScript
@@ -3210,6 +3212,21 @@ PrefabInstance:
       propertyPath: linkedLevels.Array.data[2]
       value: 
       objectReference: {fileID: 2088342671}
+    - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: ID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: levelCost
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: linkedScene
+      value: Duff
+      objectReference: {fileID: 0}
     - target: {fileID: 3976899408028535916, guid: 8b702b9d1e690804b81c9448af0cdf47,
         type: 3}
       propertyPath: worldScript
