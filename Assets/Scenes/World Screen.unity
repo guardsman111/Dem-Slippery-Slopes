@@ -2557,8 +2557,8 @@ MonoBehaviour:
   locked: 0
   sledge: {fileID: 8296172667935232910}
   play: {fileID: 42091198}
-  moveSpeed: 0
-  linkedScene: SampleScene
+  moveSpeed: 0.3
+  linkedScene: Level_1
   unlockedMat: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   unlockButton: {fileID: 413316314}
   levelCost: 1

@@ -14,6 +14,7 @@ public class Obstacle_Script : MonoBehaviour
         {
             pMoveScript.HitObstacle();
             canvasEnd.SetActive(true);
+            Timer_Script.timer.Stop();
         }
     }
 }

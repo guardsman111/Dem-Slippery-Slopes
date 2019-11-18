@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     private float Rotation;
-    private int speed = 10;
+    private int speed = 6;
     private float hitAngle = 0;
     private float currentSpeed = 0;
     private Rigidbody body;
@@ -51,16 +51,16 @@ public class Player_Movement : MonoBehaviour
         if (racing)
         {
             //Handles Sideways movement
-            if (Input.GetKey(KeyCode.A) && transform.position.x > -2)
+            if (Input.GetKey(KeyCode.A))
             {
-                if (body.velocity.x > -strafeSpeed)
+                if (body.velocity.x > (-strafeSpeed * currentSpeed / 10))
                 {
                     body.velocity += new Vector3(-0.5f, 0, 0);
                 }
             }
-            else if (Input.GetKey(KeyCode.D) && transform.position.x < 2)
+            else if (Input.GetKey(KeyCode.D))
             {
-                if (body.velocity.x < strafeSpeed)
+                if (body.velocity.x < (strafeSpeed * currentSpeed / 10))
                 {
                     body.velocity += new Vector3(0.5f, 0, 0);
                 }
@@ -145,7 +145,7 @@ public class Player_Movement : MonoBehaviour
             // Rotate Sledge with ground
             if (Physics.Raycast(transform.position, -Vector3.up, out hit))
             {
-                transform.rotation = Quaternion.RotateTowards(transform.localRotation, hit.collider.GetComponent<Transform>().localRotation, Time.deltaTime * 50f);
+                transform.rotation = Quaternion.RotateTowards(transform.localRotation, hit.collider.transform.parent.transform.localRotation, Time.deltaTime * 50f);
             }
 
             // Get Angle of ground beneath sledge
