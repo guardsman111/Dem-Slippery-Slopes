@@ -32,7 +32,7 @@ public class Finish_Script : MonoBehaviour
             pMoveScript.StopRacing();
             canvasEnd.SetActive(true);
             CalculateStars();
-            Timer_Script.timer.Stop();
+            Debug.Log("Race Ended");
         }
     }
 
@@ -44,15 +44,15 @@ public class Finish_Script : MonoBehaviour
     //Calculates the number of stars awarded according to player time
     public void CalculateStars()
     {
-        if (fastTime >= Timer_Sript.timer.Elapsed.TotalSeconds)
+        if (fastTime >= Timer_Script.timer.Elapsed.TotalSeconds)
         {
             World_Script.starsAchieved = 3;
         }
-        else if (medTime >= Timer_Sript.timer.Elapsed.TotalSeconds)
+        else if (medTime >= Timer_Script.timer.Elapsed.TotalSeconds)
         {
             World_Script.starsAchieved = 2;
         }
-        else if (slowTime >= Timer_Sript.timer.Elapsed.TotalSeconds)
+        else if (slowTime >= Timer_Script.timer.Elapsed.TotalSeconds)
         {
             World_Script.starsAchieved = 1;
         }
@@ -60,5 +60,6 @@ public class Finish_Script : MonoBehaviour
         {
             World_Script.starsAchieved = 0;
         }
+        Debug.Log("Stars Calculated");
     }
 }

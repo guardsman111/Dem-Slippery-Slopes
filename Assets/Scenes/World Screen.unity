@@ -2561,7 +2561,7 @@ MonoBehaviour:
   linkedScene: Level_1
   unlockedMat: {fileID: 2100000, guid: c2ba876cb0b957746b3ea83d9bae7589, type: 2}
   unlockButton: {fileID: 413316314}
-  levelCost: 1
+  levelCost: 0
   star1: {fileID: 1722626192}
   star2: {fileID: 1874385995}
   star3: {fileID: 923190763}
@@ -3225,7 +3225,12 @@ PrefabInstance:
     - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
         type: 3}
       propertyPath: linkedScene
-      value: Duff
+      value: Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: locked
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3976899408028535916, guid: 8b702b9d1e690804b81c9448af0cdf47,
         type: 3}

@@ -203,6 +203,21 @@ PrefabInstance:
       propertyPath: pMoveScript
       value: 
       objectReference: {fileID: 272608069}
+    - target: {fileID: 5941518982099110152, guid: 706d9fa20b5142f4a9d2e206b0e1a092,
+        type: 3}
+      propertyPath: fastTime
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941518982099110152, guid: 706d9fa20b5142f4a9d2e206b0e1a092,
+        type: 3}
+      propertyPath: medTime
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941518982099110152, guid: 706d9fa20b5142f4a9d2e206b0e1a092,
+        type: 3}
+      propertyPath: slowTime
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 706d9fa20b5142f4a9d2e206b0e1a092, type: 3}
 --- !u!1001 &80795358
@@ -765,6 +780,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sledge
       objectReference: {fileID: 0}
+    - target: {fileID: 4976078148048393252, guid: 615ff6b889d4d114a978a4159b904e2c,
+        type: 3}
+      propertyPath: strafeSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4976078148048393255, guid: 615ff6b889d4d114a978a4159b904e2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -825,17 +845,13 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4976078148048393252, guid: 615ff6b889d4d114a978a4159b904e2c,
-        type: 3}
-      propertyPath: strafeSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4279390240234180545, guid: 615ff6b889d4d114a978a4159b904e2c,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 66394df21359b174181046dfad767e9b, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4976078148048393253, guid: 615ff6b889d4d114a978a4159b904e2c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 615ff6b889d4d114a978a4159b904e2c, type: 3}
 --- !u!1001 &1081088875
 PrefabInstance:
@@ -1077,6 +1093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI_Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377620948365170643, guid: d228a87a996a50e4bac5e82dbda90983,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4377620950088570962, guid: d228a87a996a50e4bac5e82dbda90983,
         type: 3}

@@ -23,6 +23,8 @@ public class World_Script : MonoBehaviour
 
         levelIDs[currentLevelID].GetComponent<Level_Object>().starsAchieved = starsAchieved;
         Star_Script.stars += starsAchieved;
+        Debug.Log("Stars Added");
+        Debug.Log(starsAchieved);
     } 
 
     //Loads level scene
