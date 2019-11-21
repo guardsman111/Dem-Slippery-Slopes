@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectible
   - Level
+  - Start
   layers:
   - Default
   - TransparentFX

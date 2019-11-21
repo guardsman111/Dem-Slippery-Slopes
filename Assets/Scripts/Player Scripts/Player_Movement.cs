@@ -47,6 +47,7 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !finished)
         {
             racing = true;
+            GameObject.FindGameObjectWithTag("Start").SetActive(false);
         }
         if (racing)
         {
@@ -136,6 +137,10 @@ public class Player_Movement : MonoBehaviour
     // Fixed Update handles sledge angle and max speeds
     void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         currentSpeed = body.velocity.z;
         if (racing)
         {
