@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 5941518982099110158, guid: 706d9fa20b5142f4a9d2e206b0e1a092,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.55
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 5941518982099110158, guid: 706d9fa20b5142f4a9d2e206b0e1a092,
         type: 3}
@@ -452,7 +452,7 @@ PrefabInstance:
     - target: {fileID: 6129863903624247571, guid: ad43b2287897c10408b61bc546dcd24f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.212
+      value: 2.33
       objectReference: {fileID: 0}
     - target: {fileID: 6129863903624247571, guid: ad43b2287897c10408b61bc546dcd24f,
         type: 3}
@@ -790,11 +790,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sledge
       objectReference: {fileID: 0}
-    - target: {fileID: 4976078148048393252, guid: 615ff6b889d4d114a978a4159b904e2c,
-        type: 3}
-      propertyPath: strafeSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4976078148048393255, guid: 615ff6b889d4d114a978a4159b904e2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -860,8 +855,13 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 66394df21359b174181046dfad767e9b, type: 2}
-    m_RemovedComponents:
-    - {fileID: 4976078148048393253, guid: 615ff6b889d4d114a978a4159b904e2c, type: 3}
+    - target: {fileID: 4976078148048393253, guid: 615ff6b889d4d114a978a4159b904e2c,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ace7c4bbdc6c20048901fbb77d756d9e,
+        type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ff6b889d4d114a978a4159b904e2c, type: 3}
 --- !u!1001 &1081088875
 PrefabInstance:
