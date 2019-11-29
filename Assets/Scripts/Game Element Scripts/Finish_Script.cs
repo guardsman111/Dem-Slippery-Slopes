@@ -32,6 +32,7 @@ public class Finish_Script : MonoBehaviour
             pMoveScript.StopRacing();
             canvasEnd.SetActive(true);
             CalculateStars();
+            Timer_Script.timer.Stop();
             Debug.Log("Race Ended");
         }
     }

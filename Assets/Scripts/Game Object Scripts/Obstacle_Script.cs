@@ -10,11 +10,13 @@ public class Obstacle_Script : MonoBehaviour
     //Stops race on trigger, then shows menu
     public void OnTriggerEnter(Collider collider)
     {
+        Debug.Log("Hit");
         if (collider.tag == "Player")
         {
             pMoveScript.HitObstacle();
             canvasEnd.SetActive(true);
             Timer_Script.timer.Stop();
+            Debug.Log("Hit Player");
         }
     }
 }
