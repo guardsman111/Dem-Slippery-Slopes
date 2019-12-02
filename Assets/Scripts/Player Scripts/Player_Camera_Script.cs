@@ -17,7 +17,7 @@ public class Player_Camera_Script : MonoBehaviour
         if (raceCheck)
         {
             speed = parent.getSpeed();
-            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0, 2.45f, -parent.getSpeed() / 2), 1 * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0, 3f, -parent.getSpeed() / 2), 1 * Time.deltaTime);
             if (speed <= 8)
             {
                 transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(30, 0, 0), Time.deltaTime * 10f);
