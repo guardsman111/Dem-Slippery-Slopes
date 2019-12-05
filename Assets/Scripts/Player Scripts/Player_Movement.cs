@@ -9,7 +9,7 @@ public class Player_Movement : MonoBehaviour
     private float hitAngle = 0;
     private float currentSpeed = 0;
     private Rigidbody body;
-    public Transform parent;
+    public Animator Rider;
     public float strafeSpeed = 3.0f;
 
     public bool racing = false;
@@ -47,6 +47,7 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !finished)
         {
             racing = true;
+            Rider.SetBool("Racing", true);
             GameObject.FindGameObjectWithTag("Start").SetActive(false);
         }
         if (racing)
@@ -161,31 +162,37 @@ public class Player_Movement : MonoBehaviour
                 if (speed > slow)
                 {
                     speed = slow;
+                    Rider.SetInteger("Speed", slow);
                 }
             if (hitAngle > 339 && hitAngle <= 349)
                 if (speed > slower)
                 {
                     speed = slower;
+                    Rider.SetInteger("Speed", slower);
                 }
             if (hitAngle > 329 && hitAngle <= 339)
                 if (speed > slowest)
                 {
                     speed = slowest;
+                    Rider.SetInteger("Speed", slowest);
                 }
             if (hitAngle > 0 && hitAngle <= 11)
                 if (speed < fast)
                 {
                     speed = fast;
+                    Rider.SetInteger("Speed", fast);
                 }
             if (hitAngle > 11 && hitAngle <= 21)
                 if (speed < faster)
                 {
                     speed = faster;
+                    Rider.SetInteger("Speed", faster);
                 }
             if (hitAngle > 21 && hitAngle <= 31)
                 if (speed < fastest)
                 {
                     speed = fastest;
+                    Rider.SetInteger("Speed", fastest);
                 }
 
             /// Legacy Constant Speed
@@ -343,6 +350,7 @@ public class Player_Movement : MonoBehaviour
     public void StopRacing()
     {
         Debug.Log("Stop Racing!");
+        Rider.SetBool("Racing", false);
         racing = false;
         finished = true;
     }
@@ -351,6 +359,7 @@ public class Player_Movement : MonoBehaviour
     public void HitObstacle()
     {
         Debug.Log("Stop Racing!");
+        Rider.SetBool("Racing", false);
         racing = false;
         finished = true;
         body.velocity = new Vector3(0, 0, 0);
