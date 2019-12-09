@@ -16,6 +16,8 @@ public class Player_Movement : MonoBehaviour
     public bool finished = false;
     private bool slowing = true; //used in debugging
 
+    private AudioSource speaker;
+
     //Speed settings for each slope type
     [SerializeField]
     private int slow = 10;
@@ -39,6 +41,7 @@ public class Player_Movement : MonoBehaviour
         {
             body.velocity = new Vector3(0, -0.5f, speed);
         }
+        speaker = this.GetComponent<AudioSource>();
     }
 
     //Update handles Movement
@@ -49,6 +52,7 @@ public class Player_Movement : MonoBehaviour
             racing = true;
             Rider.SetBool("Racing", true);
             GameObject.FindGameObjectWithTag("Start").SetActive(false);
+            speaker.Play();
         }
         if (racing)
         {
@@ -162,36 +166,42 @@ public class Player_Movement : MonoBehaviour
                 if (speed > slow)
                 {
                     speed = slow;
+                    speaker.volume = 0.5f;
                     Rider.SetInteger("Speed", slow);
                 }
             if (hitAngle > 339 && hitAngle <= 349)
                 if (speed > slower)
                 {
                     speed = slower;
+                    speaker.volume = 0.4f;
                     Rider.SetInteger("Speed", slower);
                 }
             if (hitAngle > 329 && hitAngle <= 339)
                 if (speed > slowest)
                 {
                     speed = slowest;
+                    speaker.volume = 0.3f;
                     Rider.SetInteger("Speed", slowest);
                 }
             if (hitAngle > 0 && hitAngle <= 11)
                 if (speed < fast)
                 {
                     speed = fast;
+                    speaker.volume = 0.6f;
                     Rider.SetInteger("Speed", fast);
                 }
             if (hitAngle > 11 && hitAngle <= 21)
                 if (speed < faster)
                 {
                     speed = faster;
+                    speaker.volume = 0.7f;
                     Rider.SetInteger("Speed", faster);
                 }
             if (hitAngle > 21 && hitAngle <= 31)
                 if (speed < fastest)
                 {
                     speed = fastest;
+                    speaker.volume = 0.8f;
                     Rider.SetInteger("Speed", fastest);
                 }
 
@@ -351,6 +361,7 @@ public class Player_Movement : MonoBehaviour
     {
         Debug.Log("Stop Racing!");
         Rider.SetBool("Racing", false);
+        speaker.Stop();
         racing = false;
         finished = true;
     }

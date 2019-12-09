@@ -17,10 +17,14 @@ public class Particle_Effects_Script : MonoBehaviour
                 pSys.Play(true);
                 racing = true;
             }
+            else
+            {
+                pSys.Play(false);
+            }
         }
         else
         {
-            pSys.emission.rateOverTime;
+            pSys.Play(false);
         }
     }
 }

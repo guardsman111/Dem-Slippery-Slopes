@@ -5,6 +5,12 @@ using UnityEngine;
 public class Collection_Script : MonoBehaviour
 {
     public int coinValue;
+    private AudioSource speaker;
+
+    private void Start()
+    {
+        speaker = GetComponentInParent<AudioSource>();
+    }
 
     //On Collision with collectable, destroy collectable and add coin value too global coins
     public void OnTriggerEnter(Collider collider)
@@ -13,6 +19,7 @@ public class Collection_Script : MonoBehaviour
         {
             Coin_Script.SetLevelCoins(coinValue);
             Destroy(gameObject);
+            speaker.Play();
         }
     }
 }

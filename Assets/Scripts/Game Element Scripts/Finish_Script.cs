@@ -18,10 +18,13 @@ public class Finish_Script : MonoBehaviour
 
     public GameObject canvasEnd;
 
+    private AudioSource speaker;
+
     //Starts the second flag animation slightly late so they look less alike when the player comes to the finish
     public void Start()
     {
         Invoke("SpawnFlag", 1.0f);
+        speaker = this.GetComponent<AudioSource>();
     }
 
     //Stops race on trigger, then calculates player time
@@ -34,6 +37,7 @@ public class Finish_Script : MonoBehaviour
             CalculateStars();
             Timer_Script.timer.Stop();
             Debug.Log("Race Ended");
+            speaker.Play();
         }
     }
 
