@@ -12,6 +12,7 @@ public class World_Script : MonoBehaviour
     public static int starsAchieved = 0;
     public GameObject[] levelIDs;
     public GameObject[] levelObjects;
+    public World_Save_Script saveLoader;
 
     //Organizes levels array by numerical value and adds achieved stars to Level Object
     public void Awake()
@@ -20,7 +21,7 @@ public class World_Script : MonoBehaviour
         levelIDs = new GameObject[100];
         levelObjects = GameObject.FindGameObjectsWithTag("Level");
         levelIDs = levelObjects.OrderBy(level => level.GetComponent<Level_Object>().GetID()).ToArray();
-
+        saveLoader.LoadLevel();
         levelIDs[currentLevelID].GetComponent<Level_Object>().starsAchieved = starsAchieved;
         Star_Script.stars += starsAchieved;
         Debug.Log("Stars Added");
@@ -30,6 +31,7 @@ public class World_Script : MonoBehaviour
     //Loads level scene
     public void StartLevel(string linkScene)
     {
+        saveLoader.SaveLevel();
         SceneManager.LoadScene(linkScene);
     }
 
