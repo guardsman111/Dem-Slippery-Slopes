@@ -132,7 +132,7 @@ public class Level_Object : MonoBehaviour
         }
     }
 
-    public bool GetLocked(bool newV)
+    public bool GetLocked()
     {
         return locked;
     }

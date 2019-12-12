@@ -9718,12 +9718,12 @@ MonoBehaviour:
   strafeSpeed: 7
   racing: 0
   finished: 0
-  slow: 10
-  slower: 8
+  slow: 12
+  slower: 9
   slowest: 6
-  fast: 12
-  faster: 14
-  fastest: 16
+  fast: 14
+  faster: 17
+  fastest: 20
 --- !u!135 &4976078148048393256
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10048,11 +10048,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4976078148048393255}
     m_Modifications:
-    - target: {fileID: 3225997938434098463, guid: d2a7a2edc2292234d818ac18603f1f7e,
-        type: 3}
-      propertyPath: m_Name
-      value: 19 Sled
-      objectReference: {fileID: 0}
     - target: {fileID: 1918064845313750796, guid: d2a7a2edc2292234d818ac18603f1f7e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10108,6 +10103,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3225997938434098463, guid: d2a7a2edc2292234d818ac18603f1f7e,
+        type: 3}
+      propertyPath: m_Name
+      value: 19 Sled
+      objectReference: {fileID: 0}
     - target: {fileID: 2416470818642256530, guid: d2a7a2edc2292234d818ac18603f1f7e,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -10128,11 +10128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4976078148048393255}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: d1e634e4d6b392b489e074bb9e773583,
-        type: 3}
-      propertyPath: m_Name
-      value: Rider
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d1e634e4d6b392b489e074bb9e773583,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10208,6 +10203,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 5c513cd60550f514991272cd0fd884f6, type: 2}
+    - target: {fileID: -927199367670048503, guid: d1e634e4d6b392b489e074bb9e773583,
+        type: 3}
+      propertyPath: m_Name
+      value: Rider
+      objectReference: {fileID: 0}
     - target: {fileID: -1316743014691780232, guid: d1e634e4d6b392b489e074bb9e773583,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
