@@ -9,7 +9,9 @@ public class Player_Movement : MonoBehaviour
     private float hitAngle = 0;
     private float currentSpeed = 0;
     private Rigidbody body;
-    public Animator Rider;
+    public GameObject Rider;
+    private Animator RiderAnimator;
+    public Transform sledgeTransform;
     public float strafeSpeed = 3.0f;
 
     public bool racing = false;
@@ -42,6 +44,7 @@ public class Player_Movement : MonoBehaviour
             body.velocity = new Vector3(0, -0.5f, speed);
         }
         speaker = this.GetComponent<AudioSource>();
+        RiderAnimator = Rider.GetComponent<Animator>();
     }
 
     //Update handles Movement
@@ -50,7 +53,7 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !finished)
         {
             racing = true;
-            Rider.SetBool("Racing", true);
+            RiderAnimator.SetBool("Racing", true);
             GameObject.FindGameObjectWithTag("Start").SetActive(false);
             speaker.Play();
         }
@@ -63,6 +66,8 @@ public class Player_Movement : MonoBehaviour
                 {
                     body.velocity += new Vector3(-0.5f, 0, 0);
                 }
+                sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, (30 / strafeSpeed) * body.velocity.x, 0));
+                Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180 + (30 / strafeSpeed) * body.velocity.x, 0));
             }
             else if (Input.GetKey(KeyCode.D))
             {
@@ -70,14 +75,40 @@ public class Player_Movement : MonoBehaviour
                 {
                     body.velocity += new Vector3(0.5f, 0, 0);
                 }
+                sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, (30 / strafeSpeed) * body.velocity.x, 0));
+                Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180 + (30 / strafeSpeed) * body.velocity.x, 0));
             }
             else if (body.velocity.x > 0)
             {
-                body.velocity += new Vector3(-0.5f, 0, 0);
+                if (body.velocity.x > 0.5)
+                {
+                    body.velocity += new Vector3(-0.5f, 0, 0);
+                    sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, (30 / strafeSpeed) * body.velocity.x, 0));
+                    Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180 + (30 / strafeSpeed) * body.velocity.x, 0));
+                }
+                else
+                {
+
+                    body.velocity += new Vector3(-0.5f, 0, 0);
+                    sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                    Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                }
             }
             else if (body.velocity.x < 0)
             {
-                body.velocity += new Vector3(0.5f, 0, 0);
+                if (body.velocity.x < 0.5)
+                {
+                    body.velocity += new Vector3(0.5f, 0, 0);
+                    sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, (30 / strafeSpeed) * body.velocity.x, 0));
+                    Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180 + (30 / strafeSpeed) * body.velocity.x, 0));
+                }
+                else
+                {
+
+                    body.velocity += new Vector3(-0.5f, 0, 0);
+                    sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                    Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                }
             }
 
 
@@ -126,7 +157,6 @@ public class Player_Movement : MonoBehaviour
             if (currentSpeed > 0.5)
             {
                 body.velocity -= new Vector3(0, 0.5f, 0.2f);
-                Debug.Log(currentSpeed);
             }
             else
             {
@@ -167,42 +197,42 @@ public class Player_Movement : MonoBehaviour
                 {
                     speed = slow;
                     speaker.volume = 0.5f;
-                    Rider.SetInteger("Speed", slow);
+                    RiderAnimator.SetInteger("Speed", slow);
                 }
             if (hitAngle > 339 && hitAngle <= 349)
                 if (speed > slower)
                 {
                     speed = slower;
                     speaker.volume = 0.4f;
-                    Rider.SetInteger("Speed", slower);
+                    RiderAnimator.SetInteger("Speed", slower);
                 }
             if (hitAngle > 329 && hitAngle <= 339)
                 if (speed > slowest)
                 {
                     speed = slowest;
                     speaker.volume = 0.3f;
-                    Rider.SetInteger("Speed", slowest);
+                    RiderAnimator.SetInteger("Speed", slowest);
                 }
             if (hitAngle > 0 && hitAngle <= 11)
                 if (speed < fast)
                 {
                     speed = fast;
                     speaker.volume = 0.6f;
-                    Rider.SetInteger("Speed", fast);
+                    RiderAnimator.SetInteger("Speed", fast);
                 }
             if (hitAngle > 11 && hitAngle <= 21)
                 if (speed < faster)
                 {
                     speed = faster;
                     speaker.volume = 0.7f;
-                    Rider.SetInteger("Speed", faster);
+                    RiderAnimator.SetInteger("Speed", faster);
                 }
             if (hitAngle > 21 && hitAngle <= 31)
                 if (speed < fastest)
                 {
                     speed = fastest;
                     speaker.volume = 0.8f;
-                    Rider.SetInteger("Speed", fastest);
+                    RiderAnimator.SetInteger("Speed", fastest);
                 }
 
             /// Legacy Constant Speed
@@ -353,14 +383,12 @@ public class Player_Movement : MonoBehaviour
     //Report used for debugging at slower intervals that update or fixed update
     public void SpeedReport()
     {
-        Debug.Log(currentSpeed);
     }
 
     //Stops Race
     public void StopRacing()
     {
-        Debug.Log("Stop Racing!");
-        Rider.SetBool("Racing", false);
+        RiderAnimator.SetBool("Racing", false);
         speaker.Stop();
         racing = false;
         finished = true;
@@ -369,8 +397,7 @@ public class Player_Movement : MonoBehaviour
     //Same as stop race but immediately stops the game objects movement
     public void HitObstacle()
     {
-        Debug.Log("Stop Racing!");
-        Rider.SetBool("Racing", false);
+        RiderAnimator.SetBool("Racing", false);
         racing = false;
         finished = true;
         body.velocity = new Vector3(0, 0, 0);

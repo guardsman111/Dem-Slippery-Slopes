@@ -29,5 +29,6 @@ public class Coin_Script : MonoBehaviour
     public void ReturnCoinsToWorld()
     {
         World_Coin_Script.coins += levelCoins;
+        Debug.Log("Added Coins");
     }
 }

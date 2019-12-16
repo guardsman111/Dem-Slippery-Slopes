@@ -7,8 +7,9 @@ public class Level_Object : MonoBehaviour
     [SerializeField]
     [Tooltip("Level number minus 1")]
     private int ID;
-    [SerializeField]
-    private bool locked = false;
+    public Locking_Script locker;
+
+    public World_Save_Script loadScript;
 
     public GameObject sledge;
     public GameObject play;
@@ -29,14 +30,15 @@ public class Level_Object : MonoBehaviour
     [Tooltip("Sequence children cannot be selected unless the sequence parent (the level object with the linked levels array) has been unlocked")]
     public bool isSequenceChild = false;
 
-    void Awake()
+    void Start()
     {
         CheckStars();
     }
+
     //Starts player sledge moving towards and rotates sledge to face this object
     public void OnMouseDown()
     {
-        if (!locked)
+        if (!locker.locked)
         {
             InvokeRepeating("MoveTowards", 0.02f, 0.02f);
             sledge.transform.position = Vector3.MoveTowards(sledge.transform.position, transform.position, moveSpeed);
@@ -44,7 +46,7 @@ public class Level_Object : MonoBehaviour
             Quaternion lookRot = Quaternion.LookRotation(lookPos);
             sledge.transform.localRotation = lookRot;
         }
-        else if (locked)
+        else if (locker.locked)
         {
             if (!isSequenceChild)
             {
@@ -118,8 +120,8 @@ public class Level_Object : MonoBehaviour
     //For setting and getting locked value
     public void SetLocked(bool newV)
     {
-        locked = newV;
-        if (!locked)
+        locker.locked = newV;
+        if (!locker.locked)
         {
             GetComponent<MeshRenderer>().material = unlockedMat;
             if (linkedLevels != null)
@@ -134,6 +136,11 @@ public class Level_Object : MonoBehaviour
 
     public bool GetLocked()
     {
-        return locked;
+        return locker.locked;
+    }
+
+    public void loadComplete()
+    {
+        locker.LoadLocked(ID);
     }
 }

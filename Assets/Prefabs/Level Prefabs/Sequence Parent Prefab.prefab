@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 3976899407368942888}
   - component: {fileID: 3976899407368942889}
   - component: {fileID: 3976899407368942886}
+  - component: {fileID: 7443473762644038114}
   - component: {fileID: 3976899407368942887}
   m_Layer: 0
   m_Name: Sequence Parent Prefab
@@ -362,7 +363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  locked: 1
+  locker: {fileID: 0}
+  loadScript: {fileID: 0}
   sledge: {fileID: 0}
   play: {fileID: 3976899408028535917}
   moveSpeed: 0.3
@@ -379,6 +381,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isSequenceChild: 0
+--- !u!114 &7443473762644038114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3976899407368942884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ad515f14f765044bf129d1d0069d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locked: 0
+  loadScript: {fileID: 0}
 --- !u!136 &3976899407368942887
 CapsuleCollider:
   m_ObjectHideFlags: 0

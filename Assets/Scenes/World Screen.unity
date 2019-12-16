@@ -514,6 +514,7 @@ GameObject:
   - component: {fileID: 159706928}
   - component: {fileID: 159706929}
   - component: {fileID: 159706930}
+  - component: {fileID: 159706931}
   m_Layer: 0
   m_Name: World Object
   m_TagString: Untagged
@@ -577,6 +578,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelArrayHolder: {fileID: 159706929}
+  lockArray: 
+--- !u!114 &159706931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159706926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f98815d59ea1aa48b1f29764f718509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &186251066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,6 +1951,30 @@ Transform:
   m_Father: {fileID: 2088342674}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1566174092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
+    type: 3}
+  m_PrefabInstance: {fileID: 3976899407191743201}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cf33f4cee300f4a89975fc4d838ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1566174096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7443473762644038114, guid: 8b702b9d1e690804b81c9448af0cdf47,
+    type: 3}
+  m_PrefabInstance: {fileID: 3976899407191743201}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ad515f14f765044bf129d1d0069d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1615497779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,6 +2238,7 @@ GameObject:
   - component: {fileID: 1739683531}
   - component: {fileID: 1739683530}
   - component: {fileID: 1739683529}
+  - component: {fileID: 1739683534}
   - component: {fileID: 1739683533}
   m_Layer: 0
   m_Name: Level 1
@@ -2221,7 +2260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  locked: 0
+  locker: {fileID: 1739683534}
+  loadScript: {fileID: 159706930}
   sledge: {fileID: 8296172667935232910}
   play: {fileID: 42091198}
   moveSpeed: 0.3
@@ -2313,6 +2353,21 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1739683534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739683528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ad515f14f765044bf129d1d0069d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locked: 0
+  loadScript: {fileID: 159706930}
+  parent: {fileID: 1739683529}
 --- !u!1 &1874385995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,6 +2473,7 @@ GameObject:
   - component: {fileID: 2088342673}
   - component: {fileID: 2088342672}
   - component: {fileID: 2088342671}
+  - component: {fileID: 2088342675}
   - component: {fileID: 2088342670}
   m_Layer: 0
   m_Name: Level 3
@@ -2452,8 +2508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cf33f4cee300f4a89975fc4d838ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 4
-  locked: 1
+  ID: 2
+  locker: {fileID: 2088342675}
+  loadScript: {fileID: 159706930}
   sledge: {fileID: 8296172667935232910}
   play: {fileID: 186251066}
   moveSpeed: 0.3
@@ -2531,6 +2588,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088342675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088342669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ad515f14f765044bf129d1d0069d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locked: 1
+  loadScript: {fileID: 159706930}
+  parent: {fileID: 2088342671}
 --- !u!1001 &2918042479936089527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2715,13 +2787,43 @@ PrefabInstance:
     - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
         type: 3}
       propertyPath: locked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: loadScript
+      value: 
+      objectReference: {fileID: 159706930}
+    - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: startLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3976899407368942886, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: locker
+      value: 
+      objectReference: {fileID: 1566174096}
     - target: {fileID: 3976899408028535916, guid: 8b702b9d1e690804b81c9448af0cdf47,
         type: 3}
       propertyPath: worldScript
       value: 
       objectReference: {fileID: 159706929}
+    - target: {fileID: 7443473762644038114, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: loadScript
+      value: 
+      objectReference: {fileID: 159706930}
+    - target: {fileID: 7443473762644038114, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443473762644038114, guid: 8b702b9d1e690804b81c9448af0cdf47,
+        type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1566174092}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b702b9d1e690804b81c9448af0cdf47, type: 3}
 --- !u!1 &8296172667935232910 stripped

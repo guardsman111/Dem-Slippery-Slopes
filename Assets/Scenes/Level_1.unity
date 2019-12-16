@@ -1177,6 +1177,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4377620949589625454, guid: d228a87a996a50e4bac5e82dbda90983,
+        type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1690173269, guid: d228a87a996a50e4bac5e82dbda90983, type: 3}
       propertyPath: currentSceneName
       value: Level_1

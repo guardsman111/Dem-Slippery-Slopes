@@ -36,8 +36,8 @@ public class Finish_Script : MonoBehaviour
             canvasEnd.SetActive(true);
             CalculateStars();
             Timer_Script.timer.Stop();
-            Debug.Log("Race Ended");
             speaker.Play();
+            canvasEnd.GetComponentInChildren<Return_To_World_Script>().noWin = false;
         }
     }
 
@@ -65,6 +65,5 @@ public class Finish_Script : MonoBehaviour
         {
             World_Script.starsAchieved = 0;
         }
-        Debug.Log("Stars Calculated");
     }
 }

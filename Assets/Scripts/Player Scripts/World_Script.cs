@@ -41,5 +41,15 @@ public class World_Script : MonoBehaviour
         {
             Application.Quit();
         }
+
+        if (Input.GetKey(KeyCode.B))
+        {
+            saveLoader.SaveLevel();
+        }
+
+        if (Input.GetKey(KeyCode.N))
+        {
+            SceneManager.LoadScene("World Screen");
+        }
     }
 }
