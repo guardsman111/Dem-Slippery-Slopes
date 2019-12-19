@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 1918064845313750796}
   - component: {fileID: 8364405039737051766}
   m_Layer: 0
-  m_Name: 19 Sled 1
+  m_Name: Player Sledge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a1ca59c63defcbe479974f01865aed3f, type: 2}
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 66394df21359b174181046dfad767e9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

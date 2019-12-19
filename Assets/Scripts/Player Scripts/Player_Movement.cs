@@ -398,6 +398,7 @@ public class Player_Movement : MonoBehaviour
     public void HitObstacle()
     {
         RiderAnimator.SetBool("Racing", false);
+        speaker.Stop();
         racing = false;
         finished = true;
         body.velocity = new Vector3(0, 0, 0);

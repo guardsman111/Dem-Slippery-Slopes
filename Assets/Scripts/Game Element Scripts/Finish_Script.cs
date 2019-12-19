@@ -38,6 +38,7 @@ public class Finish_Script : MonoBehaviour
             Timer_Script.timer.Stop();
             speaker.Play();
             canvasEnd.GetComponentInChildren<Return_To_World_Script>().noWin = false;
+            canvasEnd.GetComponent<Finish_Menu_Script>().CountStars(World_Script.starsAchieved);
         }
     }
 

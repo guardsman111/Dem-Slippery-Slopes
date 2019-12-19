@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Obstacle_Script : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Obstacle_Script : MonoBehaviour
         {
             pMoveScript.HitObstacle();
             canvasEnd.SetActive(true);
+            canvasEnd.GetComponent<Finish_Menu_Script>().RunFail();
             Timer_Script.timer.Stop();
             speaker.Play();
             canvasEnd.GetComponentInChildren<Return_To_World_Script>().noWin = true;

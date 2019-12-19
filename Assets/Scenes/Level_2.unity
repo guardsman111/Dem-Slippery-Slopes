@@ -1831,11 +1831,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sledge
       objectReference: {fileID: 0}
-    - target: {fileID: 4976078148048393252, guid: 615ff6b889d4d114a978a4159b904e2c,
-        type: 3}
-      propertyPath: strafeSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4976078148048393255, guid: 615ff6b889d4d114a978a4159b904e2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1891,26 +1886,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4976078148048393259, guid: 615ff6b889d4d114a978a4159b904e2c,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4976078148048393253, guid: 615ff6b889d4d114a978a4159b904e2c,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.947895
-      objectReference: {fileID: 0}
-    - target: {fileID: 4976078148048393253, guid: 615ff6b889d4d114a978a4159b904e2c,
-        type: 3}
-      propertyPath: m_Center.x
-      value: -0.0054656565
-      objectReference: {fileID: 0}
-    - target: {fileID: 4279390240234180545, guid: 615ff6b889d4d114a978a4159b904e2c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 66394df21359b174181046dfad767e9b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ff6b889d4d114a978a4159b904e2c, type: 3}
 --- !u!1001 &946313795
