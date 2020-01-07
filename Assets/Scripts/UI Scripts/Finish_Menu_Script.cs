@@ -12,6 +12,7 @@ public class Finish_Menu_Script : MonoBehaviour
     public Text Clock;
     public Sprite failBackground;
 
+    //Displays how many stars were won alongside the player's time
     public void CountStars(int stars)
     {
         Text.text = Clock.text;
@@ -32,6 +33,7 @@ public class Finish_Menu_Script : MonoBehaviour
         }
     }
 
+    //Opens the fail menu
     public void RunFail()
     {
         GetComponent<Image>().sprite = failBackground;

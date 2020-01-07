@@ -8,6 +8,7 @@ public class Return_To_World_Script : MonoBehaviour
     public Coin_Script coinScript;
     public bool noWin;
 
+    //Returns to world and adds coins if race was a win
     public void ReturnToWorld()
     {
         if (!noWin)

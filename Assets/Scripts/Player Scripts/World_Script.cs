@@ -35,6 +35,8 @@ public class World_Script : MonoBehaviour
         SceneManager.LoadScene(linkScene);
     }
 
+    //Menu stuff, to allow exit and saving of game
+    //commented out stuff is for debugging
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -42,14 +44,14 @@ public class World_Script : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKey(KeyCode.B))
-        {
-            saveLoader.SaveLevel();
-        }
+        //if (Input.GetKey(KeyCode.B))
+        //{
+        //    saveLoader.SaveLevel();
+        //}
 
-        if (Input.GetKey(KeyCode.N))
-        {
-            SceneManager.LoadScene("World Screen");
-        }
+        //if (Input.GetKey(KeyCode.N))
+        //{
+        //    SceneManager.LoadScene("World Screen");
+        //}
     }
 }

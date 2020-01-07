@@ -35,7 +35,7 @@ public class Level_Object : MonoBehaviour
         CheckStars();
     }
 
-    //Starts player sledge moving towards and rotates sledge to face this object
+    //Starts player sledge moving forwards and rotates sledge to face this object
     public void OnMouseDown()
     {
         if (!locker.locked)

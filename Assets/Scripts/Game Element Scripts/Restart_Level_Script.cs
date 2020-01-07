@@ -7,6 +7,7 @@ public class Restart_Level_Script : MonoBehaviour
 {
     public string currentSceneName;
 
+    //Restarts level
     public void RestartLevel()
     {
         SceneManager.LoadScene(currentSceneName);

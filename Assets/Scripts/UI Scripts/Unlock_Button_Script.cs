@@ -9,6 +9,7 @@ public class Unlock_Button_Script : MonoBehaviour
     public GameObject HideObj = null;
     public GameObject unlockText;
 
+    //Shows the unlock menu
     public void ShowButton()
     {
         gameObject.SetActive(true);
@@ -16,6 +17,7 @@ public class Unlock_Button_Script : MonoBehaviour
         unlockText.SetActive(true);
     }
 
+    //Unlocks the menu or tells the player they need more starts
     public void unlockLevel()
     {
         if (Star_Script.stars >= selectedLevel.levelCost)

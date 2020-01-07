@@ -8,6 +8,7 @@ public class Particle_Effects_Script : MonoBehaviour
     public ParticleSystem pSys;
     private bool racing = false;
 
+    //Starts and stops particle systems on sledge
     private void FixedUpdate()
     {
         if (!racing)

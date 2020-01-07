@@ -8,6 +8,7 @@ public class Main_Menu_Script : MonoBehaviour
     public GameObject mainCamera;
     public GameObject player;
 
+    //Starts the world screen
     public void Play()
     {
         UI2.SetActive(true);
@@ -16,6 +17,7 @@ public class Main_Menu_Script : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    //Quits the application
     public void Quit()
     {
         Application.Quit();

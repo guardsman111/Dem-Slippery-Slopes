@@ -8,6 +8,7 @@ public class Hide_Unlock_Button_Script : MonoBehaviour
     public GameObject unlockButton = null;
     public GameObject unlockText = null;
 
+    //Hides the button UI
     public void HideButton()
     {
         gameObject.SetActive(false);
