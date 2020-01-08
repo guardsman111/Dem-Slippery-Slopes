@@ -9,14 +9,12 @@ public class World_Save_Script : MonoBehaviour
     public bool[] lockArray;
     private StreamWriter writer;
 
-    //Creates file if it didnt already exist
     public void Start()
     {
         writer = new StreamWriter("SaveDeets.txt", false);
         writer.Close();
     }
 
-    //Saves the world state
     public void SaveLevel()
     {
         writer = new StreamWriter("SaveDeets.txt", false);
@@ -33,7 +31,6 @@ public class World_Save_Script : MonoBehaviour
         Static_Constant_Script.firstRun = false;
     }
 
-    //Loads the world state
     public void LoadLevel()
     {
         StreamReader testReader = new StreamReader("SaveDeets.txt");

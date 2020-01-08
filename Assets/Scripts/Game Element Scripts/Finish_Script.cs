@@ -42,7 +42,6 @@ public class Finish_Script : MonoBehaviour
         }
     }
 
-    //Spawns the flag
     public void SpawnFlag()
     {
         Flag2.SetActive(true);

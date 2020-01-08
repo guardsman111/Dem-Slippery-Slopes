@@ -8,7 +8,6 @@ public class Play_Level_Script : MonoBehaviour
     private string linkScene;
     public World_Script worldScript;
 
-    //Gets id and linked scene from parent level object
     private void Start()
     {
         ID = GetComponentInParent<Level_Object>().GetID();
