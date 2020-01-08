@@ -565,6 +565,7 @@ MonoBehaviour:
   levelIDs: []
   levelObjects: []
   saveLoader: {fileID: 159706930}
+  startMenu: {fileID: 1695731578}
 --- !u!114 &159706930
 MonoBehaviour:
   m_ObjectHideFlags: 0

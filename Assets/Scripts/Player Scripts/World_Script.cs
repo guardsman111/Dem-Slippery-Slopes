@@ -13,10 +13,17 @@ public class World_Script : MonoBehaviour
     public GameObject[] levelIDs;
     public GameObject[] levelObjects;
     public World_Save_Script saveLoader;
+    public GameObject startMenu;
+    private bool firstLoad = true;
 
     //Organizes levels array by numerical value and adds achieved stars to Level Object
     public void Awake()
     {
+        if (firstLoad == false)
+        {
+
+        }
+        firstLoad = false;
         levelObjects = new GameObject[100];
         levelIDs = new GameObject[100];
         levelObjects = GameObject.FindGameObjectsWithTag("Level");
