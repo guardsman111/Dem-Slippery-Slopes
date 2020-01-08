@@ -5,13 +5,14 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer_Sript : MonoBehaviour
+public class Timer_Script : MonoBehaviour
 {
     public static Stopwatch timer;
     private bool timerExists = false;
+    private bool timerStopped = false;
 
 
-    // Update is called once per frame
+    //Starts timer on race start and posts it to the UI
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !timerExists)

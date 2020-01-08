@@ -5,17 +5,22 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     private float Rotation;
-    private int speed = 10;
+    private int speed = 6;
     private float hitAngle = 0;
     private float currentSpeed = 0;
     private Rigidbody body;
-    public Transform parent;
+    public GameObject Rider;
+    private Animator RiderAnimator;
+    public Transform sledgeTransform;
     public float strafeSpeed = 3.0f;
 
     public bool racing = false;
     public bool finished = false;
     private bool slowing = true; //used in debugging
 
+    private AudioSource speaker;
+
+    //Speed settings for each slope type
     [SerializeField]
     private int slow = 10;
     [SerializeField]
@@ -38,6 +43,8 @@ public class Player_Movement : MonoBehaviour
         {
             body.velocity = new Vector3(0, -0.5f, speed);
         }
+        speaker = this.GetComponent<AudioSource>();
+        RiderAnimator = Rider.GetComponent<Animator>();
     }
 
     //Update handles Movement
@@ -46,35 +53,67 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !finished)
         {
             racing = true;
+            RiderAnimator.SetBool("Racing", true);
+            GameObject.FindGameObjectWithTag("Start").SetActive(false);
+            speaker.Play();
         }
         if (racing)
         {
             //Handles Sideways movement
-            if (Input.GetKey(KeyCode.A) && transform.position.x > -2)
+            if (Input.GetKey(KeyCode.A))
             {
-                if (body.velocity.x > -strafeSpeed)
+                if (body.velocity.x > (-strafeSpeed * currentSpeed / 10))
                 {
                     body.velocity += new Vector3(-0.5f, 0, 0);
                 }
+                sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, (30 / strafeSpeed) * body.velocity.x, 0));
+                Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180 + (30 / strafeSpeed) * body.velocity.x, 0));
             }
-            else if (Input.GetKey(KeyCode.D) && transform.position.x < 2)
+            else if (Input.GetKey(KeyCode.D))
             {
-                if (body.velocity.x < strafeSpeed)
+                if (body.velocity.x < (strafeSpeed * currentSpeed / 10))
                 {
                     body.velocity += new Vector3(0.5f, 0, 0);
                 }
+                sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, (30 / strafeSpeed) * body.velocity.x, 0));
+                Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180 + (30 / strafeSpeed) * body.velocity.x, 0));
             }
             else if (body.velocity.x > 0)
             {
-                body.velocity += new Vector3(-0.5f, 0, 0);
+                if (body.velocity.x > 0.5)
+                {
+                    body.velocity += new Vector3(-0.5f, 0, 0);
+                    sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, (30 / strafeSpeed) * body.velocity.x, 0));
+                    Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180 + (30 / strafeSpeed) * body.velocity.x, 0));
+                }
+                else
+                {
+
+                    body.velocity += new Vector3(-0.5f, 0, 0);
+                    sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                    Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                }
             }
             else if (body.velocity.x < 0)
             {
-                body.velocity += new Vector3(0.5f, 0, 0);
+                if (body.velocity.x < 0.5)
+                {
+                    body.velocity += new Vector3(0.5f, 0, 0);
+                    sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, (30 / strafeSpeed) * body.velocity.x, 0));
+                    Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180 + (30 / strafeSpeed) * body.velocity.x, 0));
+                }
+                else
+                {
+
+                    body.velocity += new Vector3(-0.5f, 0, 0);
+                    sledgeTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                    Rider.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                }
             }
 
 
             //New Constant Speed
+            //Speed is calculated using angle underneath sledge
             if (currentSpeed >= speed)
             {
                 if (speed > 11)
@@ -112,12 +151,12 @@ public class Player_Movement : MonoBehaviour
                 slowing = false;
             }
         }
+        //If race is finished slow sledge and prevent any interaction
         else if (finished)
         {
             if (currentSpeed > 0.5)
             {
                 body.velocity -= new Vector3(0, 0.5f, 0.2f);
-                Debug.Log(currentSpeed);
             }
             else
             {
@@ -127,13 +166,16 @@ public class Player_Movement : MonoBehaviour
         else
         {
             body.velocity = new Vector3(0, 0, 0);
-            Debug.Log("Error - !racing and !finished");
         }
     }
 
     // Fixed Update handles sledge angle and max speeds
     void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         currentSpeed = body.velocity.z;
         if (racing)
         {
@@ -143,7 +185,7 @@ public class Player_Movement : MonoBehaviour
             // Rotate Sledge with ground
             if (Physics.Raycast(transform.position, -Vector3.up, out hit))
             {
-                transform.rotation = Quaternion.RotateTowards(transform.localRotation, hit.collider.GetComponent<Transform>().localRotation, Time.deltaTime * 50f);
+                transform.rotation = Quaternion.RotateTowards(transform.localRotation, hit.collider.transform.parent.transform.localRotation, Time.deltaTime * 50f);
             }
 
             // Get Angle of ground beneath sledge
@@ -154,34 +196,47 @@ public class Player_Movement : MonoBehaviour
                 if (speed > slow)
                 {
                     speed = slow;
+                    speaker.volume = 0.5f;
+                    RiderAnimator.SetInteger("Speed", slow);
                 }
             if (hitAngle > 339 && hitAngle <= 349)
                 if (speed > slower)
                 {
                     speed = slower;
+                    speaker.volume = 0.4f;
+                    RiderAnimator.SetInteger("Speed", slower);
                 }
             if (hitAngle > 329 && hitAngle <= 339)
                 if (speed > slowest)
                 {
                     speed = slowest;
+                    speaker.volume = 0.3f;
+                    RiderAnimator.SetInteger("Speed", slowest);
                 }
             if (hitAngle > 0 && hitAngle <= 11)
                 if (speed < fast)
                 {
                     speed = fast;
+                    speaker.volume = 0.6f;
+                    RiderAnimator.SetInteger("Speed", fast);
                 }
             if (hitAngle > 11 && hitAngle <= 21)
                 if (speed < faster)
                 {
                     speed = faster;
+                    speaker.volume = 0.7f;
+                    RiderAnimator.SetInteger("Speed", faster);
                 }
             if (hitAngle > 21 && hitAngle <= 31)
                 if (speed < fastest)
                 {
                     speed = fastest;
+                    speaker.volume = 0.8f;
+                    RiderAnimator.SetInteger("Speed", fastest);
                 }
 
             /// Legacy Constant Speed
+            /// Included to show difference in how project started and how project ended
             /// 
             /// 
             /// 
@@ -329,13 +384,24 @@ public class Player_Movement : MonoBehaviour
     //Report used for debugging at slower intervals that update or fixed update
     public void SpeedReport()
     {
-        Debug.Log(currentSpeed);
     }
 
+    //Stops Race
     public void StopRacing()
     {
-        Debug.Log("Stop Racing!");
+        RiderAnimator.SetBool("Racing", false);
+        speaker.Stop();
         racing = false;
         finished = true;
+    }
+
+    //Same as stop race but immediately stops the game objects movement
+    public void HitObstacle()
+    {
+        RiderAnimator.SetBool("Racing", false);
+        speaker.Stop();
+        racing = false;
+        finished = true;
+        body.velocity = new Vector3(0, 0, 0);
     }
 }
